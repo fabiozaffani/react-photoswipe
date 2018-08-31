@@ -7,22 +7,17 @@ class HomePage extends React.Component {
     isOpen: false,
     items: [
       {
-        src: 'http://lorempixel.com/1200/900/sports/1',
+        src:
+          'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=900',
         w: 1200,
         h: 900,
         title: 'Image 1'
       },
       {
-        src: 'http://lorempixel.com/1200/900/sports/2',
+        src: 'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900',
         w: 1200,
         h: 900,
         title: 'Image 2'
-      },
-      {
-        src: 'http://lorempixel.com/1200/900/sports/3',
-        w: 1200,
-        h: 900,
-        title: 'Image 3'
       }
     ],
     options: {
@@ -30,7 +25,7 @@ class HomePage extends React.Component {
     }
   };
 
-  openPhotoSwipe = (e) => {
+  openPhotoSwipe = e => {
     e.preventDefault();
     this.setState({
       isOpen: true

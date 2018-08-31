@@ -7,32 +7,21 @@ class GalleryPage extends React.Component {
     isOpen: false,
     items: [
       {
-        src: 'http://lorempixel.com/1200/900/nightlife/1',
-        thumbnail: 'http://lorempixel.com/120/90/nightlife/1',
+        src:
+          'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=900',
+        thumbnail:
+          'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=90',
         w: 1200,
         h: 900,
         title: 'Image 1'
       },
       {
-        src: 'http://lorempixel.com/1200/900/nightlife/2',
-        thumbnail: 'http://lorempixel.com/120/90/nightlife/2',
+        src: 'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900',
+        thumbnail:
+          'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=90',
         w: 1200,
         h: 900,
         title: 'Image 2'
-      },
-      {
-        src: 'http://lorempixel.com/1200/900/nightlife/3',
-        thumbnail: 'http://lorempixel.com/120/90/nightlife/3',
-        w: 1200,
-        h: 900,
-        title: 'Image 3'
-      },
-      {
-        src: 'http://lorempixel.com/1200/900/nightlife/4',
-        thumbnail: 'http://lorempixel.com/120/90/nightlife/4',
-        w: 1200,
-        h: 900,
-        title: 'Image 4'
       }
     ],
     options: {
@@ -40,11 +29,9 @@ class GalleryPage extends React.Component {
     }
   };
 
-  getThumbnailContent = item => (
-    <img src={item.thumbnail} width={120} height={90} alt=""/>
-  );
+  getThumbnailContent = item => <img src={item.thumbnail} width={120} height={90} alt="" />;
 
-  openPhotoSwipe = (e) => {
+  openPhotoSwipe = e => {
     e.preventDefault();
     this.setState({
       isOpen: true
@@ -82,4 +69,3 @@ class GalleryPage extends React.Component {
 }
 
 export default GalleryPage;
-

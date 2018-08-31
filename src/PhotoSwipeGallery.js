@@ -25,15 +25,15 @@ class PhotoSwipeGallery extends React.Component {
     onClose: () => {}
   };
 
+  _initOptions = () => {
+    const { options = {} } = this.props;
+    return Object.assign({ getThumbBoundsFn: this.getThumbBoundsFn }, options);
+  };
+
   thumbnails = [];
   state = {
     isOpen: this.props.isOpen,
     options: this._initOptions()
-  };
-
-  _initOptions = () => {
-    const { options = {} } = this.props;
-    return Object.assign({ getThumbBoundsFn: this.getThumbBoundsFn }, options);
   };
 
   getThumbBoundsFn = index => {

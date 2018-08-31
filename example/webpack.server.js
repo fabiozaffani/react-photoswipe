@@ -23,33 +23,35 @@ const compiler = webpack(webpackConfig);
 
 const app = express();
 
-app.use(webpackDevMiddleware(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true,
-    hash: false,
-    timings: false,
-    chunks: false,
-    chunkModules: false,
-    modules: false,
-    children: false,
-    version: false,
-    cached: false,
-    cachedAssets: false,
-    reasons: false,
-    source: false,
-    errorDetails: false
-  }
-}));
+app.use(
+  webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true,
+      hash: false,
+      timings: false,
+      chunks: false,
+      chunkModules: false,
+      modules: false,
+      children: false,
+      version: false,
+      cached: false,
+      cachedAssets: false,
+      reasons: false,
+      source: false,
+      errorDetails: false
+    }
+  })
+);
 
 app.use(webpackHotMiddleware(compiler));
 
 app.use('/assets', express.static(path.join(__dirname, 'app/assets')));
 
-proxyOptions.forEach((option) => {
+proxyOptions.forEach(option => {
   app.all(option.path, (req, res) => {
-    proxy.web(req, res, option, (err) => {
+    proxy.web(req, res, option, err => {
       console.log(err.message);
       res.statusCode = 502;
       res.end();
@@ -72,10 +74,13 @@ app.get('*', (req, res, next) => {
 
 let server = http.createServer(app);
 if (urlParts.protocol === 'https:') {
-  server = https.createServer({
-    key: fs.readFileSync(path.join(__dirname, 'key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'cert.pem'))
-  }, app);
+  server = https.createServer(
+    {
+      key: fs.readFileSync(path.join(__dirname, 'key.pem')),
+      cert: fs.readFileSync(path.join(__dirname, 'cert.pem'))
+    },
+    app
+  );
 }
 
 server.listen(urlParts.port, () => {
