@@ -16,9 +16,7 @@ const PUBLIC_PATH = '/';
 const sassLoader = {
   loader: 'sass-loader',
   options: {
-    includePaths: [
-      path.join(__dirname, 'node_modules')
-    ],
+    includePaths: [path.join(__dirname, 'node_modules')],
     outputStyle: PROD ? 'compressed' : 'expanded'
   }
 };
@@ -45,19 +43,19 @@ const webpackConfig = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            configFile: path.join(__dirname, '../.eslintrc'),
-            failOnError: PROD,
-            emitError: PROD
-          }
-        },
-        enforce: 'pre'
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: 'eslint-loader',
+      //     options: {
+      //       configFile: path.join(__dirname, '../.eslintrc'),
+      //       failOnError: PROD,
+      //       emitError: PROD
+      //     }
+      //   },
+      //   enforce: 'pre'
+      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -67,18 +65,18 @@ const webpackConfig = {
         test: /\.css$/,
         use: !HOT
           ? ExtractTextWebpackPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
-          })
+              fallback: 'style-loader',
+              use: ['css-loader', 'postcss-loader']
+            })
           : ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.scss$/,
         use: !HOT
           ? ExtractTextWebpackPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', sassLoader]
-          })
+              fallback: 'style-loader',
+              use: ['css-loader', 'postcss-loader', sassLoader]
+            })
           : ['style-loader', 'css-loader', 'postcss-loader', sassLoader]
       },
       {
